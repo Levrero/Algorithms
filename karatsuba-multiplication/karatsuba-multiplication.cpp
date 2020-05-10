@@ -4,7 +4,7 @@
 using namespace std;
 
 // function to count the number of elements in a string array
-int size_of_array(const string input_string)
+int size_of_array(const string &input_string)
 {
     int count = 0;
     for (int ii = 0; input_string[ii]; ++ii)
@@ -16,7 +16,7 @@ int size_of_array(const string input_string)
 }
 
 // function to sum strings (assume the inputs are valid strings with numerical values)
-string string_sum(const string input_1, const string input_2)
+string string_sum(const string &input_1, const string &input_2)
 {
     int size_1 = size_of_array(input_1);
     int size_2 = size_of_array(input_2);
@@ -59,7 +59,7 @@ string string_sum(const string input_1, const string input_2)
 }
 
 //function to substract strings (assume the inputs are valid strings with numerical values)
-string string_substract(const string input_1, const string input_2)
+string string_substract(const string &input_1, const string &input_2)
 {
     int size_1 = size_of_array(input_1);
     int size_2 = size_of_array(input_2);
@@ -107,7 +107,7 @@ string string_substract(const string input_1, const string input_2)
 }
 
 // karatsuba multiplication function
-string karatsuba_multiplication(const string input_1, const string input_2)
+string karatsuba_multiplication(const string &input_1, const string &input_2)
 {
     int size_1 = size_of_array(input_1);
     int size_2 = size_of_array(input_2);

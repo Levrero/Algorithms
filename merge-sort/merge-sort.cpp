@@ -2,7 +2,7 @@
 #include <vector>
 
 // merge function
-std::vector<int> merge(const std::vector<int> unsorted_vector_1, const std::vector<int> unsorted_vector_2)
+std::vector<int> merge(const std::vector<int> &unsorted_vector_1, const std::vector<int> &unsorted_vector_2)
 {
     int size_1 = unsorted_vector_1.size();
     int size_2 = unsorted_vector_2.size();
@@ -39,7 +39,7 @@ std::vector<int> merge(const std::vector<int> unsorted_vector_1, const std::vect
 }
 
 // merge-sort function
-std::vector<int> merge_sort(const std::vector<int> unsorted_vector)
+std::vector<int> merge_sort(const std::vector<int> &unsorted_vector)
 {
     int n = unsorted_vector.size();
 
