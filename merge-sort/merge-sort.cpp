@@ -2,10 +2,10 @@
 #include <vector>
 
 // merge function
-std::vector<int> merge(const std::vector<int> &unsorted_vector_1, const std::vector<int> &unsorted_vector_2)
+std::vector<int> merge(const std::vector<int> &sorted_vector_1, const std::vector<int> &sorted_vector_2)
 {
-    int size_1 = unsorted_vector_1.size();
-    int size_2 = unsorted_vector_2.size();
+    int size_1 = sorted_vector_1.size();
+    int size_2 = sorted_vector_2.size();
     int total_size = size_1 + size_2;
 
     std::vector<int> sorted_vector(total_size);
@@ -15,22 +15,22 @@ std::vector<int> merge(const std::vector<int> &unsorted_vector_1, const std::vec
     {
         if (ii >= size_1)
         {
-            sorted_vector[kk] = unsorted_vector_2[jj];
+            sorted_vector[kk] = sorted_vector_2[jj];
             ++jj;
         }
         else if (jj >= size_2)
         {
-            sorted_vector[kk] = unsorted_vector_1[ii];
+            sorted_vector[kk] = sorted_vector_1[ii];
             ++ii;
         }
-        else if (unsorted_vector_1[ii] < unsorted_vector_2[jj])
+        else if (sorted_vector_1[ii] < sorted_vector_2[jj])
         {
-            sorted_vector[kk] = unsorted_vector_1[ii];
+            sorted_vector[kk] = sorted_vector_1[ii];
             ++ii;
         }
         else
         {
-            sorted_vector[kk] = unsorted_vector_2[jj];
+            sorted_vector[kk] = sorted_vector_2[jj];
             ++jj;
         }
     }
