@@ -272,7 +272,7 @@ std::pair<std::vector<double>, std::vector<double>> closest_pair(const std::vect
 int main()
 {
     // initialise the vectors to pairs of random values
-    const int vector_size = 1000;
+    const int vector_size = 10;
 
     std::uniform_real_distribution<double> unif(0,vector_size);
     std::default_random_engine re;
