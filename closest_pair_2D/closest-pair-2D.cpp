@@ -274,7 +274,7 @@ int main()
     // initialise the vectors to pairs of random values
     const int vector_size = 10;
 
-    std::uniform_real_distribution<double> unif(0,vector_size);
+    std::uniform_real_distribution<double> unif(0, vector_size);
     std::default_random_engine re;
 
     std::vector<double> x_coords(vector_size);

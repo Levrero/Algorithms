@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <time.h>
 
 // merge function
 std::vector<int> merge(const std::vector<int> &sorted_vector_1, const std::vector<int> &sorted_vector_2)
@@ -65,18 +66,21 @@ int main()
     // initialise the vector to a random value
     const int vector_size = 100;
     std::vector<int> unsorted_vector(vector_size);
+
+    srand(time(0));
+
     for (int ii = 0; ii < vector_size; ++ii)
     {
         unsorted_vector[ii] = rand() % vector_size + 1;
     }
 
-    // sort the elements of the array
-    auto sorted_array = merge_sort(unsorted_vector);
+    // sort the elements of the vector
+    std::vector<int> sorted_vector = merge_sort(unsorted_vector);
 
     // output results
     for (int ii = 0; ii < vector_size; ++ii)
     {
-        std::cout << "Sorted array[" << ii << "] is " << sorted_array[ii] << std::endl;
+        std::cout << "Sorted vector[" << ii << "] is " << sorted_vector[ii] << std::endl;
     }
 
     return 0;
