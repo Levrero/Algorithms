@@ -61,7 +61,7 @@ std::vector<int> merge_sort(const std::vector<int> &unsorted_vector)
 }
 
 // function to find the maximum element of a unimodal vector in O(log n) time
-int find_maximum(std::vector<int> unsorted_vector)
+int find_maximum(std::vector<int> &unsorted_vector)
 {
     int n = unsorted_vector.size();
 
