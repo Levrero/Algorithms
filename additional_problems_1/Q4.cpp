@@ -105,7 +105,7 @@ std::vector<std::vector<int>> big_grid_to_small_grid(const std::vector<std::vect
 }
 
 // find minimum element in cross
-std::pair<std::vector<std::vector<int>>, int> find_min_cross(const std::vector<std::vector<int>> &grid)
+std::pair<std::vector<std::vector<int>>, int> find_min_cross(const std::vector<std::vector<int>> &grid, int row_col)
 {
     int n = grid.size();
 
@@ -133,7 +133,29 @@ std::pair<std::vector<std::vector<int>>, int> find_min_cross(const std::vector<s
         min = a;
     }
 
-    return {cross, min};
+    int min_pos = -1;
+    if (row_col == 0)
+    {
+        for (int ii = 0; ii < n; ++ii)
+        {
+            if (cross[0][ii] == min)
+            {
+                min_pos = ii;
+            }
+        }
+    }
+    else
+    {
+        for (int ii = 0; ii < n; ++ii)
+        {
+            if (cross[1][ii] == min)
+            {
+                min_pos = ii;
+            }
+        }
+    }
+
+    return {cross, min_pos};
 }
 
 
@@ -185,9 +207,7 @@ int local_min(const std::vector<std::vector<int>> &grid)
         }
         else
         {
-            auto [cross, min] = find_min_cross(grid);
-
-            int min_pos = std::distance(cross[0].begin(), std::find(cross[0].begin(), cross[0].begin(), min));
+            auto [cross, min_pos] = find_min_cross(grid, 0);
 
             if (min_pos >= 0)
             {
@@ -220,7 +240,7 @@ int local_min(const std::vector<std::vector<int>> &grid)
             }
             else
             {
-                min_pos = std::distance(cross[1].begin(), std::find(cross[1].begin(), cross[1].begin(), min));
+                auto [cross, min_pos] = find_min_cross(grid, 1);
 
                 if (grid[min_pos][n / 2 - 1] > cross[1][min_pos] && grid[min_pos][n / 2 + 1] > cross[1][min_pos])
                 {
