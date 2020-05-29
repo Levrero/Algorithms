@@ -104,6 +104,40 @@ std::vector<std::vector<int>> big_grid_to_small_grid(const std::vector<std::vect
     return subgrid;
 }
 
+// find minimum element in cross
+std::pair<std::vector<std::vector<int>>, int> find_min_cross(const std::vector<std::vector<int>> &grid)
+{
+    int n = grid.size();
+
+    std::vector<int> cross_vector(n);
+    std::vector<std::vector<int>> cross = {};
+    for (int ii = 0; ii < 2; ++ii)
+    {
+        cross.push_back(cross_vector);
+    }
+    for (int ii = 0; ii < n; ++ii)
+    {
+        cross[0][ii] = grid[n / 2][ii];
+        cross[1][ii] = grid[ii][n / 2];
+    }
+
+    int a = cross[0][std::distance(cross[0].begin(), std::min_element(cross[0].begin(), cross[0].end()))];
+    int b = cross[1][std::distance(cross[1].begin(), std::min_element(cross[1].begin(), cross[1].end()))];
+    int min;
+    if (a >= b)
+    {
+        min = b;
+    }
+    else
+    {
+        min = a;
+    }
+
+    return {cross, min};
+}
+
+
+
 // local minimum function
 int local_min(const std::vector<std::vector<int>> &grid)
 {
@@ -151,29 +185,8 @@ int local_min(const std::vector<std::vector<int>> &grid)
         }
         else
         {
-            std::vector<int> cross_vector(n);
-            std::vector<std::vector<int>> cross = {};
-            for (int ii = 0; ii < 2; ++ii)
-            {
-                cross.push_back(cross_vector);
-            }
-            for (int ii = 0; ii < n; ++ii)
-            {
-                cross[0][ii] = grid[n / 2][ii];
-                cross[1][ii] = grid[ii][n / 2];
-            }
+            auto [cross, min] = find_min_cross(grid);
 
-            int a = cross[0][std::distance(cross[0].begin(), std::min_element(cross[0].begin(), cross[0].end()))];
-            int b = cross[1][std::distance(cross[1].begin(), std::min_element(cross[1].begin(), cross[1].end()))];
-            int min;
-            if (a >= b)
-            {
-                min = b;
-            }
-            else
-            {
-                min = a;
-            }
             int min_pos = std::distance(cross[0].begin(), std::find(cross[0].begin(), cross[0].begin(), min));
 
             if (min_pos >= 0)
