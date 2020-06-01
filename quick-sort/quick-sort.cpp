@@ -34,7 +34,7 @@ void partition(std::vector<int> &vector, int &pivot)
 int choose_pivot(int n)
 {
     srand(time(0));
-
+    
     return rand() % n;
 }
 
@@ -124,8 +124,6 @@ int main()
     {
         input_vector.push_back(input_integer);
     }
-
-    //std::vector<int> input_vector = {3, 2, 10, 6, 7, 1, 9, 5, 4, 8};
 
     // sort the elements of the vector
     int number_inversions = input_vector.size() - 1;
